@@ -9,16 +9,17 @@ states = {"QLD": "Queensland", "NSW": "New South Wales",
                 "NT": "Northern Territory", "WA": "Western Australia",
                 "ACT": "Australian Capital Territory", "VIC": "Victoria",
                 "TAS": "Tasmania", "SA": "South Australia"}
+
+
 for state in states:
     print(f"{state} is {states[state]}")
 print('-----------------------------------')
 
 
-
 state_code = input("Enter short state: ").upper()
 while state_code != "":
-    if state_code in states:
+    try:
         print(state_code, "is", states[state_code])
-    else:
+    except KeyError:
         print("Invalid short state")
     state_code = input("Enter short state: ").upper()
