@@ -10,6 +10,6 @@ g2 = Guitar("Another Guitar", 1988, 23653.59)
 
 print(f"{g1.name} get_age(): Expected {103}. Got {g1.get_age()}")
 print(f"{g2.name} get_age(): Expected {37}. Got {g2.get_age()}")
-
+print()
 print(f"{g1.name} is_vintage(): Expected {True}. Got {g1.is_vintage()}")
 print(f"{g2.name} is_vintage(): Expected {False}. Got {g2.is_vintage()}")
