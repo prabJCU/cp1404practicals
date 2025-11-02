@@ -1,4 +1,8 @@
-"""CP1404 Practical - Guitar."""
+"""
+CP1404 Practical - Guitar.
+Estimate: 15 minutes
+Actual: 13 minutes
+"""
 CURRENT_YEAR = 2025
 VINTAGE_AGE = 50
 

@@ -1,7 +1,7 @@
 """
 CP1404 - Programming Language
-Estimate: 15 minutes
-Actual: 20 minutes
+Estimate: 12 minutes
+Actual: 15 minutes
 """
 
 

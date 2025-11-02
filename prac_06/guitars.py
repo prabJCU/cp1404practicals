@@ -1,5 +1,7 @@
 """
 CP1404 Practical - Guitars
+Estimate: 15 minutes
+Actual: 10 minutes
 """
 
 from prac_06.guitar import Guitar
