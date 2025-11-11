@@ -9,7 +9,7 @@ from project import Project
 
 
 def load_projects(filename):
-    """Load projects from a file and return a list of Project objects"""
+    """Load projects from a file and return a list of Project objects."""
     projects = []
     with open(filename, 'r') as in_file:
         in_file.readline()  # skips header
@@ -27,7 +27,7 @@ def load_projects(filename):
 
 
 def display_projects(projects):
-    """Display a list of Project objects, sorted by priority"""
+    """Display a list of Project objects, sorted by priority."""
     # Separate incomplete and completed projects using Project helper
     incomplete_projects = [p for p in projects if not p.is_complete()]
     completed_projects = [p for p in projects if p.is_complete()]
@@ -46,7 +46,7 @@ def display_projects(projects):
 
 
 def save_projects(filename, projects):
-    """Save all projects to file"""
+    """Save all projects to file."""
     with open(filename, 'w') as out_file:
         print("Name\tStart Date\tPriority\tCost Estimate\tCompletion Percentage", file=out_file)
 
@@ -54,6 +54,25 @@ def save_projects(filename, projects):
             start_date_str = project.start_date.strftime("%d/%m/%Y")
             print(f"{project.name}\t{start_date_str}\t{project.priority}\t"
                   f"{project.cost_estimate}\t{project.completion_percentage}", file=out_file)
+
+
+def add_new_project(projects):
+    """Prompt the user for project details and add a new project to the list."""
+    print("Let's add a new project")
+
+    name = input("Name: ").strip()
+
+    start_date_str = input("Start date (dd/mm/yyyy): ").strip()
+    start_date = datetime.datetime.strptime(start_date_str, "%d/%m/%Y").date()
+
+    priority = int(input("Priority: "))
+    cost_estimate = float(input("Cost estimate: $"))
+    completion_percentage = int(input("Percent complete: "))
+
+    new_project = Project(name, start_date, priority, cost_estimate, completion_percentage)
+    projects.append(new_project)
+
+    print(f"{new_project.name} ({new_project.start_date.strftime('%d/%m/%Y')}) added.")
 
 
 def main():
@@ -90,7 +109,7 @@ def main():
             # TODO: filter by date
             pass
         elif choice == "A":
-            # TODO: add new project
+            add_new_project(projects)
             pass
         elif choice == "U":
             # TODO: update project
