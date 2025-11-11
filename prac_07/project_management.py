@@ -106,6 +106,24 @@ def update_project(projects):
     print("Project updated successfully!")
 
 
+def filter_projects_by_date(projects):
+    """Display projects that start after a given date, sorted by start date."""
+    date_string = input("Show projects that start after date (dd/mm/yyyy): ").strip()
+
+    try:
+        filter_date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
+    except ValueError:
+        print("Invalid date format. Please use dd/mm/yyyy.")
+        return
+
+    filtered_projects = [p for p in projects if p.start_date >= filter_date]
+
+    filtered_projects.sort(key=lambda p: p.start_date)
+
+    for project in filtered_projects:
+        print(project)
+
+
 def main():
     """Main menu-driven program for managing projects."""
     print("Welcome to Pythonic Project Management")
@@ -128,8 +146,12 @@ def main():
     choice = input(">>> ").upper()
     while choice != "Q":
         if choice == "L":
-            # TODO: implement load from another file
-            pass
+            filename = input("Filename to load from: ").strip()
+            try:
+                projects = load_projects(filename)
+                print(f"Loaded {len(projects)} projects from {filename}")
+            except FileNotFoundError:
+                print("File not found.")
         elif choice == "S":
             filename = input("Filename to save to: ")
             save_projects(filename, projects)
@@ -137,7 +159,7 @@ def main():
         elif choice == "D":
             display_projects(projects)
         elif choice == "F":
-            # TODO: filter by date
+            filter_projects_by_date(projects)
             pass
         elif choice == "A":
             add_new_project(projects)
@@ -152,10 +174,10 @@ def main():
 
     save_choice = input(f"Would you like to save to {filename}? (y/n): ").lower()
     if save_choice.startswith("y"):
-        # TODO: implement saving to default file
-        pass
+        save_projects("projects.txt", projects)
+        print("Projects saved successfully to projects.txt.")
 
-    print("Thank you for using Pythonic Project Management")
+    print("Thank you for using custom-built project management software.")
 
 
 if __name__ == "__main__":
