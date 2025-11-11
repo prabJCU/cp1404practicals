@@ -1,7 +1,7 @@
 """
 CP1404 Practical - Project Management
 Estimated: 50 minutes
-Actual:
+Actual: 140 minutes
 """
 
 import datetime
