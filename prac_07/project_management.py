@@ -75,6 +75,37 @@ def add_new_project(projects):
     print(f"{new_project.name} ({new_project.start_date.strftime('%d/%m/%Y')}) added.")
 
 
+def update_project(projects):
+    """Allow the user to select a project and update its completion percentage or priority."""
+    for i, project in enumerate(projects):
+        print(f"{i} {project}")
+
+    try:
+        project_choice = int(input("Project choice: "))
+        project = projects[project_choice]
+    except (ValueError, IndexError):
+        print("Invalid choice.")
+        return
+
+    print(project)
+
+    new_percentage = input("New Percentage (leave blank to skip): ")
+    if new_percentage.strip() != "":
+        try:
+            project.completion_percentage = int(new_percentage)
+        except ValueError:
+            print("Invalid input. Skipping percentage update.")
+
+    new_priority = input("New Priority (leave blank to skip): ")
+    if new_priority.strip() != "":
+        try:
+            project.priority = int(new_priority)
+        except ValueError:
+            print("Invalid input. Skipping priority update.")
+
+    print("Project updated successfully!")
+
+
 def main():
     """Main menu-driven program for managing projects."""
     print("Welcome to Pythonic Project Management")
@@ -112,8 +143,7 @@ def main():
             add_new_project(projects)
             pass
         elif choice == "U":
-            # TODO: update project
-            pass
+            update_project(projects)
         else:
             print("Invalid choice")
 
