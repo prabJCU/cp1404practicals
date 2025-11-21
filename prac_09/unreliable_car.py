@@ -8,19 +8,19 @@ from random import randint
 
 
 class UnreliableCar(Car):
-    """..."""
+    """Specialised version of Car that drives based on reliability percentage."""
 
-    def __init__(self, name, fuel, reliability=0.0):
-        """..."""
+    def __init__(self, name, fuel, reliability):
+        """Initialise an unreliable car instance, based on parent class Car."""
         super().__init__(name, fuel)
         self.reliability = reliability
 
-    def generate_random_number(self):
-        """..."""
-        random_number = randint(0, 100)
-        return random_number
-
     def drive(self, distance):
-        """..."""
+        """Attempt to drive car depending on reliability."""
+        random_number = randint(0, 100)
 
+        if random_number > self.reliability:
+            return super().drive(distance)
+        else:
+            return 0
 
